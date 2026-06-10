@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  frontend-web:
+    build: .
+    container_name: artdance_frontend_web
+    restart: always
+    environment:
+      - PORT=3000
+    networks:
+      - artdance_network
+
+networks:
+  artdance_network:
+    external: true
