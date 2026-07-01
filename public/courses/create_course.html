@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArtDance - Programar Clase</title>
+    
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="course-styles.css">
+
+    <script src="../env.js"></script>
+    <script src="../auth-check.js"></script>
+    <script src="../sidebar.js"></script>
+</head>
+<body>
+    <div class="dashboard-layout">
+        <div id="sidebar-container"></div>
+
+        <main class="main-content">
+            <header class="module-header">
+                <h1>Programar Nueva Clase Horaria</h1>
+                <a href="courses.html" class="btn-secondary">◁ Volver al Listado</a>
+            </header>
+
+            <div id="error-box" class="error-box hidden"></div>
+
+            <section class="form-container">
+                <form id="unified-course-form">
+                    
+                    <div class="form-group">
+                        <label for="course-select">Seleccionar Especialidad / Curso *</label>
+                        <select id="course-select" required>
+                            <option value="">Cargando catálogo de cursos...</option>
+                        </select>
+                    </div>
+
+                    <div id="new-course-block" class="sub-form-box hidden">
+                        <h3>✨ Registrar una Nueva Especialidad en el Catálogo</h3>
+                        <div class="form-group">
+                            <label for="new-course-name">Nombre del Nuevo Curso *</label>
+                            <input type="text" id="new-course-name" placeholder="Ej. Danza Contemporánea Infantil">
+                        </div>
+                        <div class="form-group">
+                            <label for="new-course-cost">Costo Mensual (S/.) *</label>
+                            <input type="number" id="new-course-cost" step="0.01" value="100.00">
+                        </div>
+                    </div>
+
+                    <hr class="form-divider">
+
+                    <h3>📅 Asignación de Profesor y Horario</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="teacher-select">Profesor Encargado *</label>
+                            <select id="teacher-select" required>
+                                <option value="">Cargando profesores activos...</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="class-day">Día de la Semana *</label>
+                            <div class="form-group full-width">
+                                <label>Días de la Semana (Selecciona uno o más) *</label>
+                                <div class="days-selector-container">
+                                    <label class="day-btn">
+                                        <input type="checkbox" name="class-days" value="MON">
+                                        <span>Lun</span>
+                                    </label>
+                                    <label class="day-btn">
+                                        <input type="checkbox" name="class-days" value="TUE">
+                                        <span>Mar</span>
+                                    </label>
+                                    <label class="day-btn">
+                                        <input type="checkbox" name="class-days" value="WED">
+                                        <span>Mié</span>
+                                    </label>
+                                    <label class="day-btn">
+                                        <input type="checkbox" name="class-days" value="THU">
+                                        <span>Jue</span>
+                                    </label>
+                                    <label class="day-btn">
+                                        <input type="checkbox" name="class-days" value="FRI">
+                                        <span>Vie</span>
+                                    </label>
+                                    <label class="day-btn">
+                                        <input type="checkbox" name="class-days" value="SAT">
+                                        <span>Sáb</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="start-hour">Hora de Inicio *</label>
+                            <input type="time" id="start-hour" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="end-hour">Hora de Fin *</label>
+                            <input type="time" id="end-hour" required>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" id="btn-submit" class="btn-success">Guardar y Programar Clase</button>
+                    </div>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <script src="create_course.js"></script>
+</body>
+</html>

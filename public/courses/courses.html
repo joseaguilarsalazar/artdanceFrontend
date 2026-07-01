@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArtDance - Horarios y Cursos</title>
+    
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="courses-style.css">
+
+    <script src="../env.js"></script>
+    <script src="../auth-check.js"></script>
+    <script src="../sidebar.js"></script>
+</head>
+<body>
+    <div class="dashboard-layout">
+        <div id="sidebar-container"></div>
+
+        <main class="main-content">
+            <header class="module-header">
+                <h1>Clases y Horarios Programados</h1>
+                <button id="btn-nueva-clase" class="btn-primary">+ Programar Clase</button>
+            </header>
+
+            <section class="filters-bar">
+                <div class="filter-group">
+                    <label for="day-filter">Filtrar por Día:</label>
+                    <select id="day-filter">
+                        <option value="">Todos los días</option>
+                        <option value="MON">Lunes</option>
+                        <option value="TUE">Martes</option>
+                        <option value="WED">Miércoles</option>
+                        <option value="THU">Jueves</option>
+                        <option value="FRI">Viernes</option>
+                        <option value="SAT">Sábado</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="search-teacher">Buscar por Profesor:</label>
+                    <input type="text" id="search-teacher" placeholder="Ej. Carlos Mendoza...">
+                </div>
+            </section>
+
+            <table id="courses-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Curso / Especialidad</th>
+                        <th>Profesor</th>
+                        <th>Días Asignados</th>
+                        <th>Horario (Inicio - Fin)</th>
+                        <th>Costo Mensual</th>
+                        <th class="text-center">Acciones</th> </tr>
+                </thead>
+                <tbody id="courses-tbody">
+                    <tr>
+                        <td colspan="7" class="text-center">Cargando grilla de horarios...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+    </div>
+
+    <script src="courses.js"></script>
+</body>
+</html>

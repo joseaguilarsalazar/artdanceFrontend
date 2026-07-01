@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArtDance - Registrar Profesor</title>
+    
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="teacher-styles.css">
+
+    <script src="../env.js"></script>
+    <script src="../auth-check.js"></script>
+    <script src="../sidebar.js"></script>
+</head>
+<body>
+    <div class="dashboard-layout">
+        <div id="sidebar-container"></div>
+
+        <main class="main-content">
+            <header class="module-header">
+                <h1>Registrar Nuevo Profesor</h1>
+                <a href="teachers.html" class="btn-secondary">◁ Volver al Listado</a>
+            </header>
+
+            <div id="error-box" class="error-box hidden"></div>
+
+            <section class="form-container">
+                <form id="create-teacher-form">
+                    <div class="form-group">
+                        <label for="teacher-name">Nombre Completo del Docente *</label>
+                        <input type="text" id="teacher-name" required placeholder="Ej. Prof. Carlos Mendoza">
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn-success">Guardar Profesor</button>
+                    </div>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <script src="create_teacher.js"></script>
+</body>
+</html>

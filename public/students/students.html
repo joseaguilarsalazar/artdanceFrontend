@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArtDance - Administración de Estudiantes</title>
+    
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="student-styles.css">
+
+    <script src="../env.js"></script>
+    <script src="../auth-check.js"></script>
+    <script src="../sidebar.js"></script>
+</head>
+<body>
+    <div class="dashboard-layout">
+        <div id="sidebar-container"></div>
+
+        <main class="main-content">
+            <header class="module-header">
+                <h1>Módulo de Estudiantes</h1>
+                <button id="btn-nuevo-estudiante" class="btn-primary">+ Nuevo Estudiante</button>
+            </header>
+
+            <section class="filters-bar">
+                <div class="filter-group">
+                    <label for="search-input">Buscar por nombre:</label>
+                    <input type="text" id="search-input" placeholder="Ej. Juan Pérez...">
+                </div>
+                <div class="filter-group">
+                    <label for="district-filter">Distrito:</label>
+                    <select id="district-filter">
+                        <option value="">Todos los distritos</option>
+                        <option value="Iquitos">Iquitos</option>
+                        <option value="Punchana">Punchana</option>
+                        <option value="San Juan Bautista">San Juan Bautista</option>
+                        <option value="Belén">Belén</option>
+                    </select>
+                </div>
+            </section>
+
+            <section class="table-container">
+                <table id="students-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Distrito</th>
+                            <th>Fecha Ingreso</th>
+                            <th>Deuda Pendiente</th>
+                            <th class="text-center">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="students-tbody">
+                        <tr>
+                            <td colspan="6" class="text-center">Cargando registros de estudiantes...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+
+    <script src="students.js"></script>
+</body>
+</html>

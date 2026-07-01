@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArtDance - Registrar Estudiante</title>
+    
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="student-styles.css">
+
+    <script src="../env.js"></script>
+    <script src="../auth-check.js"></script>
+    <script src="../sidebar.js"></script>
+</head>
+<body>
+    <div class="dashboard-layout">
+        <div id="sidebar-container"></div>
+
+        <main class="main-content">
+            <header class="module-header">
+                <h1>Registrar Nuevo Estudiante</h1>
+                <a href="students.html" class="btn-secondary">◁ Volver al Listado</a>
+            </header>
+
+            <div id="error-box" class="error-box hidden"></div>
+
+            <section class="form-container">
+                <form id="create-student-form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="student-name">Nombre Completo *</label>
+                            <input type="text" id="student-name" required placeholder="Ej. Mariana Costa">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="student-birth">Fecha de Nacimiento</label>
+                            <input type="date" id="student-birth">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="student-district">Distrito *</label>
+                            <select id="student-district" required>
+                                <option value="Iquitos">Iquitos</option>
+                                <option value="Punchana">Punchana</option>
+                                <option value="San Juan Bautista">San Juan Bautista</option>
+                                <option value="Belén">Belén</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="student-address">Dirección de Domicilio</label>
+                            <input type="text" id="student-address" placeholder="Ej. Calle Condamine 123">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="parent1-name">Nombre de Apoderado 1</label>
+                            <input type="text" id="parent1-name" placeholder="Ej. Juan Costa">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="parent1-phone">Teléfono de Apoderado 1</label>
+                            <input type="text" id="parent1-phone" placeholder="Ej. 965123456">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="parent2-name">Nombre de Apoderado 2</label>
+                            <input type="text" id="parent2-name" placeholder="Ej. Ana Gomez">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="parent2-phone">Teléfono de Apoderado 2</label>
+                            <input type="text" id="parent2-phone" placeholder="Ej. 965789123">
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-success">Guardar Estudiante</button>
+                    </div>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <script src="create_student.js"></script>
+</body>
+</html>

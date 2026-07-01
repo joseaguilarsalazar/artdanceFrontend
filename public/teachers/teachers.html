@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArtDance - Administración de Profesores</title>
+    
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="teacher-styles.css">
+
+    <script src="../env.js"></script>
+    <script src="../auth-check.js"></script>
+    <script src="../sidebar.js"></script>
+</head>
+<body>
+    <div class="dashboard-layout">
+        <div id="sidebar-container"></div>
+
+        <main class="main-content">
+            <header class="module-header">
+                <h1>Módulo de Profesores</h1>
+                <button id="btn-nuevo-profesor" class="btn-primary">+ Nuevo Profesor</button>
+            </header>
+
+            <div id="status-alert" class="error-box hidden" style="background-color: #d4edda; color: #155724; border-color: #c3e6cb;"></div>
+
+            <section class="filters-bar">
+                <div class="filter-group">
+                    <label for="search-input">Buscar profesor por nombre:</label>
+                    <input type="text" id="search-input" placeholder="Ej. Carlos Mendoza...">
+                </div>
+                <div class="filter-group">
+                    <label for="status-filter">Estado Laboral:</label>
+                    <select id="status-filter">
+                        <option value="todos">Todos los estados</option>
+                        <option value="activos" selected>Solo Activos</option>
+                        <option value="inactivos">Solo Inactivos</option>
+                    </select>
+                </div>
+            </section>
+
+            <section class="table-container">
+                <table id="teachers-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre Completo</th>
+                            <th>Estado</th>
+                            <th class="text-center">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="teachers-tbody">
+                        <tr>
+                            <td colspan="4" class="text-center">Cargando nómina de profesores...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+
+    <script src="teachers.js"></script>
+</body>
+</html>

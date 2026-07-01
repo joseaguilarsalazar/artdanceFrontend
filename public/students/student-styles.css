@@ -1,0 +1,154 @@
+/* Cabecera del Módulo */
+.module-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.btn-primary {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    width: auto; /* Anula el width: 100% global de botones */
+}
+
+.btn-primary:hover {
+    background-color: #218838;
+}
+
+/* Barra de Filtros */
+.filters-bar {
+    background: white;
+    padding: 20px;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+    display: flex;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex-grow: 1;
+}
+
+.filter-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #555;
+}
+
+.filter-group input, 
+.filter-group select {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+/* Tabla de Datos Modernizada */
+.table-container {
+    background: white;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+    overflow: hidden;
+}
+
+#students-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+#students-table th {
+    background-color: #f8f9fa;
+    color: #333;
+    font-weight: 600;
+    padding: 14px 18px;
+    border-bottom: 2px solid #eee;
+}
+
+#students-table td {
+    padding: 14px 18px;
+    border-bottom: 1px solid #eee;
+    color: #555;
+    font-size: 14px;
+}
+
+#students-table tbody tr:hover {
+    background-color: #fcfcfd;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+/* 🌟 MENÚ DE OPCIONES DE 3 PUNTOS (Dropdown Flotante) */
+.options-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.btn-dots {
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 4px 10px;
+    border-radius: 4px;
+    width: auto;
+}
+
+.btn-dots:hover {
+    background-color: #eee;
+    color: #333;
+}
+
+/* Caja del menú oculta por defecto */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: white;
+    min-width: 120px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-radius: 4px;
+    z-index: 100;
+    border: 1px solid #eee;
+    padding: 5px 0;
+}
+
+/* Clase utilitaria manejada por JS para mostrar el menú */
+.dropdown-menu.show {
+    display: block;
+}
+
+.dropdown-menu a, 
+.dropdown-menu button {
+    display: block;
+    width: 100%;
+    padding: 8px 16px;
+    text-align: left;
+    background: none;
+    border: none;
+    color: #333;
+    font-size: 13px;
+    text-decoration: none;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.dropdown-menu a:hover, 
+.dropdown-menu button:hover {
+    background-color: #f4f6f9;
+    color: #007bff;
+}
