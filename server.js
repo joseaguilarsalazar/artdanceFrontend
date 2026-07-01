@@ -1,18 +1,27 @@
+require('dotenv').config(); // Load variables from .env file
 const express = require('express');
 const path = require('path');
 const app = express();
 
-// Use the port provided by Docker, or default to 3000 for local testing
 const PORT = process.env.PORT || 3000;
 
-// Serve all static assets from the 'public' directory
+// 🌟 NEW: Dynamic endpoint that feeds environment variables straight to the browser
+app.get('/env.js', (req, res) => {
+  res.type('application/javascript');
+  res.send(`
+    window.ENV = {
+      API_URL: "${process.env.API_URL || 'http://localhost:8000/'}"
+    };
+  `);
+});
+
+// Serve static assets from 'public' folder
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Fallback routing to ensure index.html handles requests smoothly
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 app.listen(PORT, () => {
-  console.log(`Frontend server is running securely on port ${PORT}`);
+  console.log(`Frontend server running on port ${PORT}`);
 });

@@ -3,18 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ArtDance School</title>
+    <title>ArtDance - Home</title>
     <link rel="stylesheet" href="style.css">
+
+    <script src="/env.js"></script>
+    <script src="auth-check.js"></script>
+    <script src="sidebar.js"></script>
 </head>
 <body>
-    <header>
-        <h1>ArtDance Trainee Workspace</h1>
-    </header>
-    <main>
-        <div id="student-grid" class="grid-container">
-            <p>Loading active student roster...</p>
-        </div>
-    </main>
-    <script src="app.js"></script>
+    <div class="dashboard-layout">
+        <div id="sidebar-container"></div>
+
+        <main class="main-content">
+            <header class="content-header">
+                <h1 id="welcome-title">Bienvenido a ArtDance</h1>
+            </header>
+            <section class="content-body">
+                <p>Selecciona una opción del menú de navegación lateral para administrar los módulos de la escuela.</p>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // Trainee-friendly template hydration
+        if (window.currentUser) {
+            document.getElementById('welcome-title').innerText = `¡Bienvenido, ${window.currentUser.username}!`;
+        }
+    </script>
 </body>
 </html>

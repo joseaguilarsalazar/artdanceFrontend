@@ -1,5 +1,4 @@
-const API_URL = "https://api.artdance.mishu-soft.org/students/";
-
+const API_URL = window.ENV.API_URL;
 async function fetchStudents() {
     try {
         const response = await fetch(API_URL);

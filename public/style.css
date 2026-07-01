@@ -1,0 +1,258 @@
+/* ==========================================================================
+   1. REINICIO GLOBAL Y ESTILOS BASE
+   ========================================================================== */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f9;
+}
+
+/* ==========================================================================
+   2. PANTALLA DE INICIO DE SESIÓN (Centrado Autónomo)
+   ========================================================================== */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    background-color: #f4f6f9;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+.login-card {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+}
+
+.login-card h2 {
+    margin: 0 0 10px 0;
+    color: #1a1a1a;
+    text-align: center;
+}
+
+.subtitle {
+    color: #666;
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    color: #333;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.error-box {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 12px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    border: 1px solid #f5c6cb;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ==========================================================================
+   3. ESTRUCTURA MAESTRA DEL PANEL DE CONTROL (DASHBOARD)
+   ========================================================================== */
+.dashboard-layout {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    background-color: #f4f6f9;
+    overflow: hidden;
+}
+
+#sidebar-container {
+    height: 100%;
+    display: flex; 
+}
+
+.sidebar {
+    position: relative; /* 🌟 Esencial: sirve de eje para posicionar el botón de cierre */
+    width: 260px;
+    height: 100%; 
+    background-color: #1a1e29;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
+    flex-shrink: 0;
+    box-sizing: border-box;
+    
+    /* 🌟 NUEVO: Controla la suavidad de la animación al colapsarse */
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden; /* Oculta los textos internos mientras se encoge el contenedor */
+}
+
+/* 🌟 NUEVO: Estado colapsado comandado por JavaScript */
+.sidebar.collapsed {
+    width: 0;
+    box-shadow: none;
+}
+
+/* 🌟 NUEVO: Estilos del Botón Desplegable Flotante (Hamburguesa) */
+.sidebar-toggle {
+    position: absolute;
+    top: 20px;
+    right: -55px; /* Lo desplaza hacia afuera, flotando sobre el margen del contenido principal */
+    width: 42px;
+    height: 42px;
+    background-color: #1a1e29;
+    color: #ffffff;
+    border: 1px solid #2d3345;
+    border-radius: 6px;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.15);
+    z-index: 999;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.sidebar-toggle:hover {
+    background-color: #007bff;
+    color: #ffffff;
+}
+
+.sidebar-brand {
+    font-size: 22px;
+    font-weight: 700;
+    text-align: center;
+    padding: 10px 0 25px 0;
+    border-bottom: 1px solid #2d3345;
+    letter-spacing: 0.5px;
+    color: #007bff;
+    white-space: nowrap; /* Evita que el título se deforme al reducir el espacio */
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0 0;
+    flex-grow: 1;
+}
+
+.sidebar-menu li a {
+    display: block;
+    padding: 14px 25px;
+    color: #a3b1cc;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    white-space: nowrap; /* Mantiene la línea de texto intacta durante el encogimiento */
+    transition: all 0.2s ease;
+}
+
+.sidebar-menu li a:hover, 
+.sidebar-menu li a.active {
+    color: #ffffff;
+    background-color: #242b3d;
+    border-left: 4px solid #007bff;
+    padding-left: 21px;
+}
+
+.sidebar-footer {
+    padding: 0 20px;
+    white-space: nowrap;
+}
+
+.logout-btn {
+    width: 100%;
+    padding: 11px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.logout-btn:hover {
+    background-color: #c82333;
+}
+
+/* ==========================================================================
+   4. ESPACIO DE TRABAJO DE LOS MÓDULOS (CONTENIDO PRINCIPAL)
+   ========================================================================== */
+.main-content {
+    flex-grow: 1;
+    /* 🌟 MODIFICADO: Agregamos 80px de padding izquierdo para que los títulos 
+       de los módulos jamás choquen con nuestro botón de hamburguesa flotante */
+    padding: 40px 40px 40px 80px; 
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.content-header h1 {
+    margin: 0 0 8px 0;
+    color: #2c3e50;
+    font-size: 28px;
+}
+
+.content-body p {
+    color: #7f8c8d;
+    font-size: 16px;
+    margin: 0;
+}
