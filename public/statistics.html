@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Panel de Estadísticas Multi-Core</title>
+    <title>Panel de Control - Estadísticas de la Academia</title>
     <link rel="stylesheet" href="../style.css">
     <script src="../env.js"></script>
     <script src="../auth-check.js"></script>
@@ -12,34 +12,35 @@
         <div id="sidebar-container"></div>
         
         <main class="main-content">
-            <h1>📊 Análisis Predictivo de Estudiantes</h1>
-            <p>Este panel utiliza procesamiento en paralelo multinúcleo en el VPS para calcular índices de riesgo en tiempo real.</p>
+            <h1>📊 Resumen Estadístico Institucional</h1>
+            <p>Métricas de rendimiento financiero y académico global de la escuela de arte.</p>
             
-            <button id="btn-crunch" class="btn-primary" style="margin: 20px 0;">⚡ Iniciar Simulación Multi-Core</button>
-            
-            <div class="metrics-grid" style="display: flex; gap: 20px; margin-bottom: 20px;">
-                <div class="metric-card" style="background: #2e3440; padding: 15px; border-radius: 8px; flex: 1;">
-                    <h3>Núcleos del Servidor Utilizados</h3>
-                    <p id="stat-cores" style="font-size: 24px; color: #88c0d0; font-weight: bold;">--</p>
+            <div class="metrics-grid" style="display: flex; gap: 20px; margin: 25px 0;">
+                <div class="metric-card" style="background: #2e3440; padding: 20px; border-radius: 8px; flex: 1; text-align: center;">
+                    <h3 style="color: #7b88a1; font-size: 14px; margin-bottom: 10px;">Alumnos Activos</h3>
+                    <p id="ui-active-students" style="font-size: 32px; color: #88c0d0; font-weight: bold; margin: 0;">--</p>
                 </div>
-                <div class="metric-card" style="background: #2e3440; padding: 15px; border-radius: 8px; flex: 1;">
-                    <h3>Tiempo de Ejecución</h3>
-                    <p id="stat-time" style="font-size: 24px; color: #a3be8c; font-weight: bold;">--</p>
+                <div class="metric-card" style="background: #2e3440; padding: 20px; border-radius: 8px; flex: 1; text-align: center;">
+                    <h3 style="color: #7b88a1; font-size: 14px; margin-bottom: 10px;">Deuda Total por Cobrar</h3>
+                    <p id="ui-total-debt" style="font-size: 32px; color: #bf616a; font-weight: bold; margin: 0;">--</p>
+                </div>
+                <div class="metric-card" style="background: #2e3440; padding: 20px; border-radius: 8px; flex: 1; text-align: center;">
+                    <h3 style="color: #7b88a1; font-size: 14px; margin-bottom: 10px;">Índice de Éxito Académico</h3>
+                    <p id="ui-avg-performance" style="font-size: 32px; color: #a3be8c; font-weight: bold; margin: 0;">--</p>
                 </div>
             </div>
 
-            <table class="data-table" style="width: 100%; border-collapse: collapse;">
+            <h2>📍 Distribución por Distritos (Iquitos)</h2>
+            <table class="data-table" style="width: 100%; border-collapse: collapse; margin-top: 15px;">
                 <thead>
                     <tr style="background: #3b4252; color: #fff; text-align: left;">
-                        <th style="padding: 12px;">ID Alumno</th>
-                        <th style="padding: 12px;">Nombre</th>
-                        <th style="padding: 12px;">Índice de Éxito Alumno</th>
-                        <th style="padding: 12px; color: #ebcb8b;">ID de Proceso Asignado (PID)</th>
+                        <th style="padding: 12px;">Distrito de Procedencia</th>
+                        <th style="padding: 12px; text-align: right;">Cantidad de Alumnos Matriculados</th>
                     </tr>
                 </thead>
-                <tbody id="table-analytics-body">
+                <tbody id="table-distribution-body">
                     <tr>
-                        <td colspan="4" style="padding: 12px; text-align: center; color: #7b88a1;">Presiona el botón superior para enviar la carga de trabajo paralela...</td>
+                        <td colspan="2" style="padding: 12px; text-align: center; color: #7b88a1;">Cargando métricas institucionales...</td>
                     </tr>
                 </tbody>
             </table>
@@ -48,44 +49,48 @@
 
     <script src="../sidebar.js"></script>
     <script>
-        document.getElementById('btn-crunch').addEventListener('click', async () => {
+        // Runs automatically as soon as the manager enters the stats page
+        document.addEventListener('DOMContentLoaded', async () => {
             const token = localStorage.getItem('token');
-            const tbody = document.getElementById('table-analytics-body');
-            tbody.innerHTML = `<tr><td colspan="4" style="text-align:center; padding:12px;">Cruncheando matrices matemáticas complejas en paralelo...</td></tr>`;
+            const tbody = document.getElementById('table-distribution-body');
 
             try {
-                const response = await fetch(`${window.ENV.API_URL}api/statistics/parallel-crunch/`, {
+                const response = await fetch(`${window.ENV.API_URL}api/statistics/dashboard/`, {
                     method: 'GET',
                     headers: {
-                        'Authorization': `Bearer ${token}`
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
                     }
                 });
 
-                if (!response.ok) throw new Error('Error en el procesamiento del servidor.');
+                if (!response.ok) throw new Error('Error al conectar con la pasarela de estadísticas.');
 
                 const result = await response.json();
                 
-                // Render metrics summaries
-                document.getElementById('stat-cores').innerText = `${result.total_cores_utilized} Cores`;
-                document.getElementById('stat-seconds').innerText = `${result.execution_seconds} seg.`;
+                // 1. Map standard business values directly to UI blocks
+                document.getElementById('ui-active-students').innerText = result.ui_data.active_students;
+                document.getElementById('ui-total-debt').innerText = `S/. ${result.ui_data.total_debt}`;
+                document.getElementById('ui-avg-performance').innerText = `${result.ui_data.average_performance}%`;
 
-                // Render student distribution details
+                // 2. Render standard district distribution records
                 tbody.innerHTML = '';
-                result.data.forEach(student => {
+                Object.entries(result.ui_data.regional_distribution).forEach(([district, count]) => {
                     const row = document.createElement('tr');
                     row.innerHTML = `
-                        <td style="padding: 12px; border-bottom: 1px solid #3b4252;">${student.id}</td>
-                        <td style="padding: 12px; border-bottom: 1px solid #3b4252;">${student.name}</td>
-                        <td style="padding: 12px; border-bottom: 1px solid #3b4252; font-weight: bold;">${student.analytics_score}%</td>
-                        <td style="padding: 12px; border-bottom: 1px solid #3b4252; color: #ebcb8b; font-weight: bold;">
-                            ⚙️ Process ID: ${student.core_process_id}
-                        </td>
+                        <td style="padding: 12px; border-bottom: 1px solid #3b4252;">${district}</td>
+                        <td style="padding: 12px; border-bottom: 1px solid #3b4252; text-align: right; font-weight: bold;">${count} alumnos</td>
                     `;
                     tbody.appendChild(row);
                 });
 
+                // 🌟 Developer console logging (Handy for you during testing!)
+                console.log("=== MULTIPROCESSING VERIFICATION METRICS ===");
+                console.log(`Cores engaged on server: ${result._multiprocessing_meta.total_cpu_cores_utilized}`);
+                console.log(`PIDs that divided the workload:`, result._multiprocessing_meta.distinct_worker_pids_engaged);
+                console.log(`Parallel crunch time: ${result._multiprocessing_meta.execution_seconds} seconds`);
+
             } catch (err) {
-                alert(err.message);
+                tbody.innerHTML = `<tr><td colspan="2" style="padding:12px; color:#bf616a; text-align:center;">${err.message}</td></tr>`;
             }
         });
     </script>
