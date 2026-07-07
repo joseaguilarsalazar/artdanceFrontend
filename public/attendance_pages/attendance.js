@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // 1. Descarga inicial e hidratación de filtros cruzados
 async function inicializarModulo() {
     try {
-        const resClasses = await fetch(`${API_URL}course-classes/`, { headers: { "Authorization": `Bearer ${token}` } });
+        const resClasses = await fetch(`${API_URL}classes/`, { headers: { "Authorization": `Bearer ${token}` } });
         if (!resClasses.ok) throw new Error("No se pudo cargar la grilla de clases.");
         todasLasClases = await resClasses.get_success_headers ? [] : await resClasses.json();
 
