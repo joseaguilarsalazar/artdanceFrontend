@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <li><a href="/students/students.html" id="nav-students">Estudiantes</a></li>
                 <li><a href="/teachers/teachers.html" id="nav-teachers">Profesores</a></li>
                 <li><a href="/courses/courses.html" id="nav-courses">Cursos</a></li>
-                <li><a href="/attendance.html" id="nav-attendance">Asistencias</a></li>
+                <li><a href="/attendance_pages/attendance.html" id="nav-attendance">Asistencias</a></li>
                 <li><a href="/statistics.html" id="nav-statistics">Estadísticas</a></li>
             </ul>
             <div class="sidebar-footer">
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("nav-teachers")?.classList.add("active");
     } else if (currentPath.includes("courses/courses.html")) {
         document.getElementById("nav-courses")?.classList.add("active");
-    } else if (currentPath.includes("attendance.html")) {
+    } else if (currentPath.includes("attendance_pages/attendance.html")) {
         document.getElementById("nav-attendance")?.classList.add("active");
     } else if (currentPath.includes("statistics.html")) {
         document.getElementById("nav-statistics")?.classList.add("active");
