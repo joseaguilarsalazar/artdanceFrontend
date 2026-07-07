@@ -1,0 +1,163 @@
+/* Bloques de sección */
+.selection-card, 
+.roster-container {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
+    border: 1px solid #e9ecef;
+}
+
+.selection-card h3, 
+.roster-header h3 {
+    margin: 0 0 15px 0;
+    color: #2c3e50;
+    font-size: 18px;
+}
+
+/* Grilla de selección superior */
+.filters-row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.input-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex-grow: 1;
+    min-width: 200px;
+}
+
+.input-field label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #495057;
+}
+
+.input-field select, 
+.date-picker-box input {
+    padding: 10px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+/* Destacar campo principal */
+.highlight-field select {
+    border-color: #007bff;
+    background-color: #f8faff;
+    font-weight: 600;
+}
+
+/* Encabezado de la lista con datepicker */
+.roster-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.date-picker-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.date-picker-box label {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.date-picker-box input {
+    border-color: #007bff;
+    font-weight: bold;
+}
+
+/* Caja informativa informativa */
+.attendance-tip {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeeba;
+    padding: 12px 15px;
+    border-radius: 6px;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+/* Tabla de Asistencia */
+#roster-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 25px;
+}
+
+#roster-table th {
+    background-color: #f8f9fa;
+    color: #495057;
+    font-weight: 600;
+    padding: 14px 18px;
+    border-bottom: 2px solid #dee2e6;
+    text-align: left;
+}
+
+#roster-table td {
+    padding: 14px 18px;
+    border-bottom: 1px solid #eee;
+    color: #495057;
+}
+
+#roster-table tbody tr:hover {
+    background-color: #fafbfc;
+}
+
+/* Checkbox gigante cómodo para cliquear en tablets o pantallas táctiles */
+.absent-checkbox {
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    accent-color: #dc3545; /* Color rojo de alerta al activarse la falta */
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    width: auto;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+}
+
+/* Alertas utilitarias flotantes */
+.alert-box {
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-size: 14px;
+}
+.alert-danger { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+.alert-success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }

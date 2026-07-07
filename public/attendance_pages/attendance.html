@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArtDance - Control de Asistencias</title>
+    
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="attendance-styles.css">
+
+    <script src="../env.js"></script>
+    <script src="../auth-check.js"></script>
+    <script src="../sidebar.js"></script>
+</head>
+<body>
+    <div class="dashboard-layout">
+        <div id="sidebar-container"></div>
+
+        <main class="main-content">
+            <header class="module-header">
+                <h1>Control de Asistencia Diaria</h1>
+            </header>
+
+            <div id="alert-box" class="alert-box hidden"></div>
+
+            <section class="selection-card">
+                <h3>🔍 1. Selecciona la Clase Programada</h3>
+                <div class="filters-row">
+                    <div class="input-field">
+                        <label for="filter-course">Filtrar por Curso:</label>
+                        <select id="filter-course">
+                            <option value="">Todos los cursos</option>
+                        </select>
+                    </div>
+                    <div class="input-field">
+                        <label for="filter-teacher">Filtrar por Profesor:</label>
+                        <select id="filter-teacher">
+                            <option value="">Todos los profesores</option>
+                        </select>
+                    </div>
+                    <div class="input-field highlight-field">
+                        <label for="class-select">Clase / Horario Objetivo *</label>
+                        <select id="class-select" required>
+                            <option value="">-- Elige un curso primero --</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <section id="roster-section" class="roster-container hidden">
+                <div class="roster-header">
+                    <h3>👥 2. Lista de Estudiantes Inscritos</h3>
+                    <div class="date-picker-box">
+                        <label for="attendance-date">Fecha de Asistencia:</label>
+                        <input type="date" id="attendance-date" required>
+                    </div>
+                </div>
+
+                <div class="attendance-tip">
+                    💡 <strong>Regla del Sistema:</strong> Deja la casilla <u>vacía</u> si el alumno asistió. Marca el checkbox únicamente si el alumno <strong>FALTÓ (Ausente)</strong>.
+                </div>
+
+                <table id="roster-table">
+                    <thead>
+                        <tr>
+                            <th>ID Alumno</th>
+                            <th>Nombre Completo</th>
+                            <th class="text-center">¿FALTÓ? (Inasistencia)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="roster-tbody">
+                        </tbody>
+                </table>
+
+                <div class="form-actions">
+                    <button id="btn-save-attendance" class="btn-success">💾 Guardar Registro de Asistencia</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="attendance.js"></script>
+</body>
+</html>
