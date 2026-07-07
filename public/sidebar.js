@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 
                 <li class="menu-module-title">Pagos y Asistencias</li>
                 <li><a href="/attendance_pages/attendance.html" id="nav-attendance">✔ Control de Asistencia</a></li>
+                <li><a href="/payment_pages/payments.html" id="nav-payments">💳 Registro de Pagos</a></li>
                 
                 <li class="menu-module-title">Reportes y Analíticas</li>
                 <li><a href="/statistics.html" id="nav-statistics">📊 Dashboard de Indicadores</a></li>
@@ -47,7 +48,8 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("nav-attendance")?.classList.add("active");
     } else if (currentPath.includes("statistics.html")) {
         document.getElementById("nav-statistics")?.classList.add("active");
-    }
+    } else if (currentPath.includes("payment_pages/")) {
+        document.getElementById("nav-payments")?.classList.add("active");}
 
     // Lógica de alternancia (Show/Hide) para la barra lateral
     const sidebarToggle = document.getElementById("sidebar-toggle");
