@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArtDance - Modificar Transacción</title>
+    
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="payment-styles.css">
+
+    <script src="../env.js"></script>
+    <script src="../auth-check.js"></script>
+    <script src="../sidebar.js"></script>
+</head>
+<body>
+    <div class="dashboard-layout">
+        <div id="sidebar-container"></div>
+
+        <main class="main-content">
+            <header class="module-header">
+                <h1>Modificar Recibo #<span id="recibo-id-title">--</span></h1>
+                <a href="payments.html" class="btn-secondary">◁ Cancelar</a>
+            </header>
+
+            <div id="error-box" class="error-box hidden"></div>
+
+            <section class="form-container">
+                <form id="edit-payment-form">
+                    <div class="form-group">
+                        <label>Estudiante (No transferible)</label>
+                        <div id="student-name-display" class="read-only-highlight">Cargando...</div>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="edit-amount">Monto Rectificado (S/.) *</label>
+                            <input type="number" id="edit-amount" step="0.01" min="1.00" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-date">Fecha de Pago Real *</label>
+                            <input type="date" id="edit-date" required>
+                        </div>
+                    </div>
+
+                    <div class="form-actions actions-split">
+                        <button type="button" id="btn-delete-payment" class="btn-danger-action">💥 Eliminar Recibo</button>
+                        <button type="submit" id="btn-submit" class="btn-success">Guardar Cambios</button>
+                    </div>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <script src="edit_payment.js"></script>
+</body>
+</html>

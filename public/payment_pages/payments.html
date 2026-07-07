@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArtDance - Libro de Ingresos</title>
+    
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="payment-styles.css">
+
+    <script src="../env.js"></script>
+    <script src="../auth-check.js"></script>
+    <script src="../sidebar.js"></script>
+</head>
+<body>
+    <div class="dashboard-layout">
+        <div id="sidebar-container"></div>
+
+        <main class="main-content">
+            <header class="module-header">
+                <h1>Historial de Transacciones y Mensualidades</h1>
+                <button id="btn-nuevo-pago" class="btn-primary">⚡ Registrar Cobro</button>
+            </header>
+
+            <div id="toast-alert" class="alert-box hidden"></div>
+
+            <section class="filters-bar">
+                <div class="filter-group">
+                    <label for="search-student">Buscar por Alumno:</label>
+                    <input type="text" id="search-student" placeholder="Ej. Mariana Costa...">
+                </div>
+                <div class="filter-group">
+                    <label for="date-filter">Filtrar por Fecha:</label>
+                    <input type="date" id="date-filter">
+                </div>
+            </section>
+
+            <section class="table-container">
+                <table id="payments-table">
+                    <thead>
+                        <tr>
+                            <th>ID Recibo</th>
+                            <th>Estudiante</th>
+                            <th>Monto Abonado</th>
+                            <th>Fecha de Pago</th>
+                            <th class="text-center">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="payments-tbody">
+                        <tr>
+                            <td colspan="5" class="text-center">Cargando transacciones de caja...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+
+    <script src="payments.js"></script>
+</body>
+</html>

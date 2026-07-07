@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArtDance - Registrar Cobro</title>
+    
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="payment-styles.css">
+
+    <script src="../env.js"></script>
+    <script src="../auth-check.js"></script>
+    <script src="../sidebar.js"></script>
+</head>
+<body>
+    <div class="dashboard-layout">
+        <div id="sidebar-container"></div>
+
+        <main class="main-content">
+            <header class="module-header">
+                <h1>Registrar Recibo de Pago</h1>
+                <a href="payments.html" class="btn-secondary">◁ Volver</a>
+            </header>
+
+            <div id="error-box" class="error-box hidden"></div>
+
+            <section class="form-container">
+                <form id="payment-form">
+                    <div class="form-group">
+                        <label for="student-select">Seleccionar Alumno Matriculado *</label>
+                        <select id="student-select" required>
+                            <option value="">Cargando padrón de alumnos...</option>
+                        </select>
+                    </div>
+
+                    <div id="debt-warning-box" class="debt-box hidden">
+                        <span>Estado de Cuenta Actual:</span>
+                        <strong id="debt-amount-text">S/. 0.00</strong>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="payment-amount">Monto a Abonar (S/.) *</label>
+                            <input type="number" id="payment-amount" step="0.01" min="1.00" placeholder="0.00" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="payment-date">Fecha de Recepción *</label>
+                            <input type="date" id="payment-date" required>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" id="btn-submit" class="btn-success">Emitir Recibo de Pago</button>
+                    </div>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <script src="create_payment.js"></script>
+</body>
+</html>
