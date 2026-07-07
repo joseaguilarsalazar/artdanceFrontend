@@ -292,3 +292,20 @@ button:disabled {
     box-sizing: border-box; /* Prevents padding from blowing up the width calculation */
     overflow-y: auto; /* Lets the content scroll independently if the list grows */
 }
+
+/* 🌟 NUEVO: Estilos para agrupar los módulos formales en el menú lateral */
+.menu-module-title {
+    padding: 18px 25px 6px 25px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #52607a; /* Color tenue para que actúe de separador visual */
+    font-weight: 700;
+    user-select: none;
+    white-space: nowrap; /* Evita deformaciones si el menú se encoge */
+}
+
+/* Si la barra lateral está colapsada, ocultamos los títulos sutilmente */
+.sidebar.collapsed .menu-module-title {
+    display: none;
+}

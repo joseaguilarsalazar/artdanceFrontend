@@ -4,26 +4,36 @@ document.addEventListener("DOMContentLoaded", () => {
     // Safety guard: si la página no requiere el componente, omitir
     if (!sidebarContainer) return;
 
-    // Inyectamos la estructura incluyendo el nuevo botón interactivo (hamburguesa)
+    // Inyectamos la estructura organizándola por los bloques formales del proyecto
     sidebarContainer.innerHTML = `
         <div class="sidebar" id="main-sidebar">
             <button id="sidebar-toggle" class="sidebar-toggle" title="Alternar menú">☰</button>
             <div class="sidebar-brand">ArtDance Studio</div>
+            
             <ul class="sidebar-menu">
-                <li><a href="/index.html" id="nav-index">Inicio</a></li>
-                <li><a href="/students/students.html" id="nav-students">Estudiantes</a></li>
-                <li><a href="/teachers/teachers.html" id="nav-teachers">Profesores</a></li>
-                <li><a href="/courses/courses.html" id="nav-courses">Cursos</a></li>
-                <li><a href="/attendance_pages/attendance.html" id="nav-attendance">Asistencias</a></li>
-                <li><a href="/statistics.html" id="nav-statistics">Estadísticas</a></li>
+                <li><a href="/index.html" id="nav-index">🏠 Inicio</a></li>
+                
+                <li class="menu-module-title">Gestión de Alumnos</li>
+                <li><a href="/students/students.html" id="nav-students">👥 Alumnos Matriculados</a></li>
+                
+                <li class="menu-module-title">Cursos y Personal</li>
+                <li><a href="/courses/courses.html" id="nav-courses">📖 Cursos y Horarios</a></li>
+                <li><a href="/teachers/teachers.html" id="nav-teachers">🎓 Nómina de Profesores</a></li>
+                
+                <li class="menu-module-title">Pagos y Asistencias</li>
+                <li><a href="/attendance_pages/attendance.html" id="nav-attendance">✔ Control de Asistencia</a></li>
+                
+                <li class="menu-module-title">Reportes y Analíticas</li>
+                <li><a href="/statistics.html" id="nav-statistics">📊 Dashboard de Indicadores</a></li>
             </ul>
+            
             <div class="sidebar-footer">
                 <button id="logout-btn" class="logout-btn">Cerrar Sesión</button>
             </div>
         </div>
     `;
 
-    // Resaltado de la ruta activa en el menú
+    // Resaltado de la ruta activa en el menú (Mantiene consistencia con tus subcarpetas)
     const currentPath = window.location.pathname;
     if (currentPath.includes("index.html") || currentPath === "/") {
         document.getElementById("nav-index")?.classList.add("active");
@@ -39,16 +49,16 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("nav-statistics")?.classList.add("active");
     }
 
-    // 🌟 NUEVO: Lógica de alternancia (Show/Hide) para los alumnos
+    // Lógica de alternancia (Show/Hide) para la barra lateral
     const sidebarToggle = document.getElementById("sidebar-toggle");
     const mainSidebar = document.getElementById("main-sidebar");
 
-    sidebarToggle.addEventListener("click", () => {
+    sidebarToggle?.addEventListener("click", () => {
         mainSidebar.classList.toggle("collapsed");
     });
 
     // Control de cierre de sesión
-    document.getElementById("logout-btn").addEventListener("click", () => {
+    document.getElementById("logout-btn")?.addEventListener("click", () => {
         localStorage.removeItem("token");
         localStorage.removeItem("refresh_token");
         window.location.href = "/login.html";
